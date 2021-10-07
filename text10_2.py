@@ -26,6 +26,7 @@ def getHtml(html):
     if not os.path.exists(path):
         fb = open(path, 'w+', encoding='utf-8')
         fb.write(bs.prettify())
+        fb.close()
         print("页面下载成功")
     else:
         print("文件已经存在")
