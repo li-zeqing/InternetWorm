@@ -15,13 +15,13 @@ bs = BeautifulSoup(htmlfile.read(),"html.parser")
 # print(bs.prettify())
 
 try:
-    print("输出第一个<p>标签的兄弟节点")
-    p1 = bs.find('p')
-    # print(p1)
-
-    #第二的<p>标签
-    p2 = p1.next_sibling.next_sibling
-    print(p2)
+    # print("输出第一个<p>标签的兄弟节点")
+    p1_ = bs.find('p').next_siblings
+    # for p1_sibling in p1_:
+    #     print(p1_sibling)
+    #第二个的<p>标签
+    p2 = bs.find('p').next_sibling.next_sibling
+    # print(p2)
 
     #输出第二个<p>标签的子节点
     p2_all = p2.contents
