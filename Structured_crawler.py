@@ -110,7 +110,8 @@ if __name__ == '__main__':
     #     print(len(row))
     row = siteData
     sites.append(Website(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]))
-
+    print(sites)
+    print(len(sites))
     topics = ['python']
     for topic in topics:
         print("GETTING INFO ABOUT:" + topic)
