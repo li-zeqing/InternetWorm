@@ -2,7 +2,6 @@
 import requests
 from bs4 import BeautifulSoup
 import os
-
 '''
 思路：
     获取网页地址
@@ -13,7 +12,7 @@ import os
 def getUrl(url):
     try:
         read = requests.get(url)  # 获取url
-        read.raise_for_status()  # 状态响应 返回200连接成功
+        read.raise_for_status()  # 状态响应 连接成功返回200 ,失败请求(非200响应)抛出异常
         read.encoding = read.apparent_encoding  # 从内容中分析响应内容编码方式
         return read.text  # Http响应内容的字符串，既url对应的页面内容
     except:
@@ -45,9 +44,9 @@ def getPic(html,url):
         path = root + img_url.split('/')[-1]  # 获取img的文件名
         print(path)
         try:
-            if not os.path.exists(root):
+            if not os.path.exists(root): #判断root路径下是否已经存在文件
                 os.mkdir(root)
-            if not os.path.exists(path):
+            if not os.path.exists(path):   #判断path路径下是否已经存在文件
                 read = requests.get(img_url)
                 # print(read)
                 with open(path, 'wb') as f:
@@ -61,8 +60,8 @@ def getPic(html,url):
 
 # 主函数
 if __name__ == '__main__':
-    url1 = "http://pythonscraping.com/pages/page3.html"
-    url2 = "http://pythonscraping.com"
+    url1 = "http://pythonscraping.com/pages/page3.html" #网页地址
+    url2 = "http://pythonscraping.com"     #下载图片的地址
     html_url = getUrl(url1) #获取网址
     getHtml(html_url)   #下载网页页面
     getPic(html_url,url2)   #下载网页图片
